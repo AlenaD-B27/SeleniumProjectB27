@@ -10,12 +10,16 @@ public class SeleniumTest {
 
 
         // 1- Setting up the web driver manager
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();   // you can choose any browser here
 
         // 2- Create an instance of the Chrome driver
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();         // Left side object, Right side constructor <= Polymorphism
 
         // 3- Test if the driver is working
-        driver.get("https://www.google.com");
+        driver.get("https://www.google.com"); // make sure you use httpS, not http. http could give you an error if you have some security settings set up in your ChromeDriver.
+
+
+        // RemoteWebDriver is the parent of all the web drivers.
+
     }
 }
