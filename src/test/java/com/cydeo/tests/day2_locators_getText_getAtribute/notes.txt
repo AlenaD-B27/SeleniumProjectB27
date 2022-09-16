@@ -1,0 +1,123 @@
+- To be able to do any action on any web element, there are some certain steps we have to follow:
+ #1. We have to locate the web element that we want to work on
+ #2. To locate we have to use a set of methods coming from Selenium library
+    - findElement()
+    - locator methods
+ #3. We decide what action we want to apply, find the method, and use it on the already located web element
+    - click
+
+
+ - .findElement(LOCATOR);
+  1. This method finds and returns Single web element
+  2. it accepts a locator argument, and finds the requested web element using locator
+  3. Return type: WebElement type (comes from Selenium library)
+  4. It will throw "NoSuchElementException"
+    - if you provide a wrong locator
+    - if your page does not load as fast as it should
+
+
+ - .sendKeys("text to be sent")
+  1. this method is used to send text using Selenium WebDriver
+  2. it accepts a string arg
+  3. takes the string, and passes it into the web element as a string
+
+
+ - What is a locator?
+  - Locators help us locate web elements using Selenium WebDriver.
+  - Locators are bascically 8 methods coming form selenium library
+
+  - There are total 8 locators
+  - We will learn 6 of them
+
+#1. linkText:
+  - this locator will work through the text of all the links in the page,and return matching link
+  - It accepts a string as the text of the link we are trying to locate
+  - it will ONLY ONLY ONLY works on links <a> anchor tags
+  - This method looks for EXACT text match
+  - it is similar to .equal method from java
+  - it will search through HTML code and return first matching result
+
+  EX: <a href="https://something.com"> Something </a>
+     driver.findElement(By.linkText("Something"));
+
+#2. partialLinkText:
+  - this locator will work through the text of all the links in the page,and return the PARTIAL matching link
+  - It accepts a string as the text of the link we are trying to locate
+  - it will ONLY ONLY ONLY works on links <a> anchor tags
+  - This method looks for PARTIAL text match
+  - it is similar to .contains method from java
+  - it will search through HTML code and return first matching result
+
+  EX: <a href="https://something.com"> Something Text here longer </a>
+
+     driver.findElement(By.partialLinkText("Something"));
+
+
+#3. name:
+  - it uses "name" attribute's value to locate web element
+  - it will go through HTML code and find matching "name" attribute value, and return the first matching web element
+  - name locator does not have to be unique
+
+  Ex: <div name="hu58"> </div>
+
+  syntax: driver.findElement(By.name("hu58"))
+
+
+#4. id:
+  - it uses "id" attribute's value to locate WebElement
+  - it will go through HTML code and find matching "id" attribute value, and return to web element
+  - id HAS TO BE UNIQUE
+
+ Ex: <div name="hu58" id="dge64"> </div>
+
+  Syntax: driver.findElement(By.id("dge64"));
+
+
+#5. className:
+  - it uses "class" attribute's value to locate web element
+  - it will go through HTML code and find matching "class" attribute value, and return the first matching web element
+  - className locator does not have to be unique
+
+  Ex: <div class="asdj87"> </div>
+
+ Syntax: driver.findElement(By.className("asdj87"));
+
+
+ #6. tagName:
+   - it will find and return the first matching tag provided.
+   - this locator doesn't have many use cases unless either the page is very simple or we are trying to get a group of web elements using findElementS method
+
+Ex: <div class="asdj87"> </div>
+
+ Syntax: driver.findElement(By.tagName("div"))
+
+-------------------------------------------------
+
+- .getText();
+ - this method will get the text from in between the opening and closing tag
+ - it does not accept any arg
+ - Return type is String
+
+Ex: <a href="https://something.com"> Something text </a>
+
+  driver.findElement(By.partialLinkText("Something"))
+  -> returns me the link tag as a web element
+  -> return type is WebElement
+
+  driver.findElement(By.partialLinkText("Something")).getText();
+  -> this line returns me to String
+  -> It will print out "Something text"
+
+
+- .getAttribute("Attribute Name");
+ - This method will return the given attribute's value
+ - It accepts a String arg
+ - return type is String
+ - it will find the matching attribute, and return its value
+
+ Ex: <div name="hu58" id="asd89" class="dsf76"> TEXT </div>
+
+ syntax: driver.findElement(By.id("asd89")) -> returns to WebElement
+
+     -  driver.findElement(By.id("asd89")).getAttribute("name") -> hu58
+     -  driver.findElement(By.id("asd89")).getAttribute("class") -> dsf76
