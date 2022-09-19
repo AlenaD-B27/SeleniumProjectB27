@@ -13,7 +13,7 @@ public class SeleniumTest {
         WebDriverManager.chromedriver().setup();   // you can choose any browser here
 
         // 2- Create an instance of the Chrome driver
-        WebDriver driver = new ChromeDriver();         // Left side object, Right side constructor <= Polymorphism
+        WebDriver driver = new ChromeDriver();         // Right side constructor <= Polymorphism
 
         // 3- Test if the driver is working
         driver.get("https://www.google.com"); // make sure you use httpS, not http. http could give you an error if you have some security settings set up in your ChromeDriver.
