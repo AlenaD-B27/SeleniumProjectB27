@@ -1,0 +1,95 @@
+LOCATORS:
+
+- How many total locators we have?
+ - 8 locators:
+   - id
+   - name
+   - className
+   - linkText
+   - partialLinkText
+   - tagName
+   - cssSelector
+   - xpath
+
+1- id:
+  - It will find and return web element that has matching "id" attribute value
+  - "id" is always unique
+
+Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+    driver.findElement(By.id("sjdg65"))
+
+2- name:
+  - It will find and return web element that has first matching "name" attribute value
+  - "name" is NOT always unique
+
+Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+    driver.findElement(By.name("uhs67"));
+
+3- className:
+  - It will find and return web element that has first matching "className" attribute value
+  - "className" is NOT always unique
+
+ Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+    driver.findElement(By.className("hsjd98"));
+
+4- linkText:
+  - It will look through of the LINKS in the HTML page and return first matching result
+  - It ONLY ONLY ONLY works with links (<a> tag)
+  - it works similar to .equals() methos in java
+  - It is looking for EXACT String match
+
+Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+    driver.findElement(By.linkText("TESLA CYBERTRUCK"));
+
+5- partialLinktext:
+  - It will look through of the LINKS in the HTML page and return first matching result
+  - It ONLY ONLY ONLY works with links (<a> tag)
+  - it works similar to .contains() method in java
+  - It is looking for PARTIAL String match
+
+Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+  - driver.findElement(By.partialLinkText("TESLA CYBERTRUCK"));
+  - driver.findElement(By.partialLinkText("TESLA"))
+  - driver.findElement(By.partialLinkText("CYBERTRUCK"))
+  - driver.findElement(By.partialLinkText("ESLA"))
+
+- tagName:
+  - This locator locates using given TAG NAME
+  - We pass the Tag name as String parameter
+  - It will find and return first matching result
+
+  Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+    driver.findElement(By.tagname("a"))
+
+------------------------------------------------------
+
+- cssSelector:
+ - it is one of 8 locators coming from Selenium library
+ - it allows us to create custom locators
+ - we are able to locate web elements with any attribute value
+ - we are not just limited to name, id, className attributes value
+ - We can use any custom attribute we see on web page
+
+ Syntax #1: tagname[attribute='value']
+            tagname[attribute="value"]
+
+ Ex: <a href="https://tesla.com" name="uhs67" class="hsjd98" id="sjdg65"> TESLA CYBERTRUCK </a>
+
+    a[href='https://tesla.com']
+    a[name='uhs67']
+    a[class='hsjd98']
+    a[id='sjdg65']
+
+
+Syntax #2: it is limited to use only id or class attribute value
+          "." --> stands for class attribute
+          "#" --> stands for id attribute
+
+          tagname.classValue
+          tagname#idValue
