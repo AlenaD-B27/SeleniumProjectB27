@@ -1,4 +1,4 @@
-package com.cydeo.tests.da3_locators_sccSelector_xpath;
+package com.cydeo.tests.day3_locators_sccSelector_xpath;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
