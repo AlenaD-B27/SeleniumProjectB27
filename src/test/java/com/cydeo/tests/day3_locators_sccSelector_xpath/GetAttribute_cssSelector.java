@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class getText_cssSelector {
+public class GetAttribute_cssSelector {
     /*
     1- Open a chrome browser
 2- Go to: https://login1.nextbasecrm.com/
