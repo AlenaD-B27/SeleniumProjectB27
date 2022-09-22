@@ -45,6 +45,8 @@ PS2: Pay attention to where to get the text of this button from
             System.out.println("Error label text verification FAILED");
         }
 
+        driver.quit();
+
 
 
 
