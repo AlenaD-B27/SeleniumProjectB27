@@ -1,10 +1,9 @@
 package com.cydeo.tests.day3_locators_sccSelector_xpath;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Locators_getText {
     /*
@@ -18,11 +17,14 @@ Expected: Incorrect login or password
      */
     public static void main(String[] args) {
 
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+//        WebDriverManager.chromedriver().setup();
+//        WebDriver driver = new ChromeDriver();
+
+
+        WebDriver driver = WebDriverFactory.getDriver("chrome");
 
         driver.get("https://login1.nextbasecrm.com/");
+        driver.manage().window().maximize();
 
        // driver.findElement(By.name("USER_LOGIN")).sendKeys("incorrect");
         WebElement inputUserName = driver.findElement(By.name("USER_LOGIN"));
