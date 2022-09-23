@@ -36,3 +36,13 @@ MAIN SYNTAX:  //tagName[@atrribute='value']
                                                  ("." stands for text)
 #4. //*[@attribute='value'] --> "*" stands for all tags
                             --> it will make less specific for searching element
+--------------------------------------------------------
+ - .isDisplayed():
+  - What does it do?
+   - it returns boolean value on a given web element
+   - if web element is displayed, it will return to "true"
+   - if web element is not displayed, it will return to "false"
+   - It doesn't accept any arg
+
+ Syntax: driver.findElement(locator).isDisplayed() --> true, if displayed
+         driver.findElement(locator).isDisplayed() --> false, if not displayed
