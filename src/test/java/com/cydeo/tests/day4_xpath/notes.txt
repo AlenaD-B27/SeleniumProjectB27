@@ -1,0 +1,38 @@
+XPATH:
+- it is one of 8 locator of Selenium
+- It allows us to create custom locators using provided any attribute and their values
+- We can also use the text of the provided web element to create locator
+
+Xpath has 2 different types:
+
+**P.I.Q: What is difference between absolute and relative xpath
+
+#1. ABSOLUTE XPATH:
+ - it starts with single slash "/"
+ - it starts looking in html from root/parent to web element
+ - it starts from html tag, and it goes down 1 by 1 until we reach to the specific web element that we are loking for
+ - This is not good way of locating element
+ - it will break wiyh any minimal change in html code
+
+ Syntax: /html/body/div[3]/div/div/tbody/div/button[2]
+
+#2. RELATIVE XPATH:
+ - it starts with double slash "//"
+ - "//" means you can start from anywhere in HTML code
+ - Since we are allowed to start from anywhere in the HTML, relative xpath is very dependable
+ - We will use relative xpath, not absolute xpath
+
+MAIN SYNTAX:  //tagName[@atrribute='value']
+
+- How do we go from parent to child using xpath?
+ - Using "/" we can go from parent to direct child
+ - Uisng "//" we can go from parent to any child(grand-child, grand-grand-child...)
+
+
+ COMMONLY USED XPATH SYNTAXES:
+#1. //tagname[@attribute='value']
+#2. //tagname[contains(@attribute,'value')]
+#3. //tagname[text()='text of the element'] or //tagname[.='text of element']
+                                                 ("." stands for text)
+#4. //*[@attribute='value'] --> "*" stands for all tags
+                            --> it will make less specific for searching element
