@@ -1,4 +1,4 @@
-package com.cydeo.tests.day6;
+package com.cydeo.tests.day_6;
 
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.Alert;
