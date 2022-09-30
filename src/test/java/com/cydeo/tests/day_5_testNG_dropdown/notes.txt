@@ -1,0 +1,50 @@
+- FindElement vs FindElements:
+ - FindElement:
+  -returns single web element
+  -return type is WebElement
+  -when element is not found, it will throw NoSuchElementException
+
+ - FindElements:
+  -returns list of web elements
+  -return type is List<WebElement>
+  -it will not throw any exception it will return to empty list
+
+
+---------------------------------------------------------
+
+- driver.manage().timeouts().implicitlywait(10, TimeUnit.SECOND)
+
+- It is coming from Selenium
+- Basicaly this line will allow our driver to wait up to given time , if driver cannot immediatialy locate web element
+
+- We write 1 time and it will appliad to whole driver session
+- driver does not have to wait until given time(10sec.) If it is find the web element before maybe in 2sec. it will continue with execution
+
+
+--------------------------------------------------------
+
+- checkbox and radio button
+
+P.I.Q: How do you handle checkbox and radio buttons using Selenium?
+
+1. We can click
+2. We can check if they are selected or not. --> isSelected()
+3. We can check if they are enabled or not. --> isEnebled()
+
+- isSelected() --> if web element is selected, it will return true, if not false
+- isEnabled() --> if web element is enabled, it will return true, if not false
+
+
+
+--------------------------------------------------
+
+- Stale Element Reference Exception
+
+   There are 2 situation that we can get this exception:
+
+ 1- navigation (refresh, back, forward)
+  -(handle with reassigning(relocating) the web element)
+  - relocation means; you will find or reaasign element again
+  - cydeoLink = driver.findElement(locator)  ;
+
+ 2- when element deleted from both html and page (handle with try/catch)
