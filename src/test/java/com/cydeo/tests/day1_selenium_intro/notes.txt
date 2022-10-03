@@ -87,6 +87,6 @@ Maven project:
  - after using .quit() method, we can not execute any more line of codes
  - It will give "NoSuchSessionException"
 
- - What is a seesion?
+ - What is a session?
   - Every time we run our Selenium code, a session is created
   - That specific session will continue until we explicitly kill it with using .quit() method

@@ -12,7 +12,7 @@ Xpath has 2 different types:
  - it starts looking in html from root/parent to web element
  - it starts from html tag, and it goes down 1 by 1 until we reach to the specific web element that we are loking for
  - This is not good way of locating element
- - it will break wiyh any minimal change in html code
+ - it will break with any minimal change in html code
 
  Syntax: /html/body/div[3]/div/div/tbody/div/button[2]
 
@@ -26,7 +26,7 @@ MAIN SYNTAX:  //tagName[@atrribute='value']
 
 - How do we go from parent to child using xpath?
  - Using "/" we can go from parent to direct child
- - Uisng "//" we can go from parent to any child(grand-child, grand-grand-child...)
+ - Using "//" we can go from parent to any child(grand-child, grand-grand-child...)
 
 
  COMMONLY USED XPATH SYNTAXES:
