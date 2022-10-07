@@ -10,7 +10,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class DropdownPractice {
@@ -48,8 +50,16 @@ Use all Select options. (visible text, value, index)
         Thread.sleep(1000);
         stateDropdown.selectByValue("VA");
         Thread.sleep(1000);
-        // TODO: figure out index part with for loop ==> add everything to List.
-        stateDropdown.selectByIndex(5); // just count
+
+        // List of xpath indexes:
+
+        Map<String, Integer> states = new HashMap<>();
+        for (int i = 2; i < stateDropdown.getOptions().size(); i++){
+            stateDropdown.selectByIndex(i);
+            states.put(stateDropdown.getFirstSelectedOption().getText(), i);
+        }
+        // California index? ==> states.get("California");
+        stateDropdown.selectByIndex(states.get("California")); // => 5
         Thread.sleep(1000);
 
         String expectedSelectedOption = "California";
