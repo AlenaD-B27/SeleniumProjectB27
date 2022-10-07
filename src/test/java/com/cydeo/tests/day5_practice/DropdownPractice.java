@@ -48,6 +48,7 @@ Use all Select options. (visible text, value, index)
         Thread.sleep(1000);
         stateDropdown.selectByValue("VA");
         Thread.sleep(1000);
+        // TODO: figure out index part with for loop ==> add everything to List.
         stateDropdown.selectByIndex(5); // just count
         Thread.sleep(1000);
 

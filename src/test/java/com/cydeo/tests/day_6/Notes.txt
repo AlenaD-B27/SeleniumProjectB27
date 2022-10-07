@@ -1,0 +1,132 @@
+TESTNG:
+
+- What is TestNG?
+ - It is UNIT TESTING FRAMEWORK
+
+- Is this tool created for testers?
+ - It is mainly for developers
+
+- Is this only Unit testing framework?
+ - No.
+ - There is also JUNIT, NUNIT
+
+- How do we create structure or change the behaviors of method using TestNG?
+ - ANNOTATIONS
+
+- Using annotations we can change the behavior of the methods.
+
+- Common annotations we will be using?
+ - @Test
+ - @BeforeMethod, @AfterMethod
+
+ - @BeforeClass, @AfterClass
+ - @BeforeTest, @AfterTest
+ - @BeforeSuite, @AfterSuite
+
+- @Test:
+ - This annotation will convert a regular java method into a runnable Test method
+ - Each test run by default in alphabetical order
+ - But we can change the running order with using priority
+ - Each test is independent from each other UNLESS we create dependency
+
+
+@Test (priority = 1)
+public void test1(){
+
+   code
+
+   assertion
+
+   code
+
+   assertion
+
+}
+
+@Test (priority = 2, dependsOnMethod="test1")
+public void mytest2(){
+
+
+}
+
+@BeforeMethod:
+ - It will run once before each test.
+ - The number of test we have, will be determining the number of this method will be running
+ - If we have 10 @Test, this will run 10 times before each test
+
+@Aftermethod:
+ - Same as @Beforemethod, but it will run after @Test
+ - It will just run once after each @Test
+
+@BeforeClass:
+ - It will ONLY RUN 1 TIME in each class before everything else
+ - This doesn't care about how many @Test you have
+
+@AfterClass:
+ - It will ONLY RUN 1 TIME in each class after everything else
+ - This doesn't care about how many @Test you have
+
+
+EX: If we want to open a browser before each @Test and close after each @Test, where do we put our setUp and tearDown methods?
+ 1. @BeforeMethod: WebDriver driver = WebDriverFactory.getDriver("chrome")
+ 2. @AfterMethod: driver.quit() or driver.close()
+
+
+- Asssertions:
+ - What do assertions do?
+  - Assertions are used to verify actual=expected
+  - Type of assertions can be String, int, List<String>,
+  - Assertions determine if a test pass or fail
+
+- There are 3 types of Assertions:
+ - Assert.assertEquals(actual,expected,"Optional fail message")
+ - Assert.assertTrue(actual.equals(expected),"Optional fail message")
+ - Assert.fail() --> used for developers to make test fail purposelly
+
+
+-------------------------------------------------------------
+
+
+DROPDOWNS:
+
+- How mant types of dropdowns we have?
+ - 2 types: #1 HTML dropdown
+            #2 Select dropdown
+
+
+#1 HTML dropdown:
+ - If the dropdown has no <select> tag, it is a html dropdown
+ - We handle like other webeelements: Locate it and click on it
+
+#2 Select dropdown:
+ - If the dropdown has <select> tag it is Select dropdown
+  - To be able to handle this type of dropdown we have to use SELECT class
+
+SYNTAX: Select select = new Select(finding <select> dropdown webelement)
+
+- getOptions():
+ - it will get all options
+ - Return type is List<WebElement>
+
+- getFirstSelectedOption():
+ - it will give us default option or current selected option
+ - Return type: WebElement
+
+- How we can do selections on select dropdown?
+ - There are 3 ways:
+  - selectByVisibleText
+  - selectByValue
+  - selectByIndex
+
+
+- SelectByIndex: selects the dropdown option by its index number. (index number starts with 0)
+ex: selectByIndex(int args);
+
+- selectByValue: selects the dropdown option by its value(We provide String)
+ex: selectByValue("String arg");
+
+- selectByVisibleText: selects dropdown option by its text value(we provide String)
+ex: selectByVisibleText("String args");
+
+
+
