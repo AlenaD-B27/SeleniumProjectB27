@@ -54,7 +54,7 @@ Use all Select options. (visible text, value, index)
         // List of xpath indexes:
 
         Map<String, Integer> states = new HashMap<>();
-        for (int i = 2; i < stateDropdown.getOptions().size(); i++){
+        for (int i = 0; i < stateDropdown.getOptions().size(); i++){
             stateDropdown.selectByIndex(i);
             states.put(stateDropdown.getFirstSelectedOption().getText(), i);
         }
