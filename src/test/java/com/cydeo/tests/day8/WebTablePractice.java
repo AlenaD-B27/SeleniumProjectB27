@@ -1,31 +1,13 @@
 package com.cydeo.tests.day8;
 
-import com.cydeo.utilities.WebDriverFactory;
+import com.cydeo.tests.base.TestBase;
 import com.cydeo.utilities.WebTableUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-public class WebTablePractice {
-
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setUp(){
-        driver = WebDriverFactory.getDriver("chrome");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //1. Go to: https://practice.cydeo.com/web-tables
-        driver.get("https://practice.cydeo.com/web-tables");
-
-    }
-
+public class WebTablePractice extends TestBase {
 
 
     @Test
@@ -67,10 +49,6 @@ public class WebTablePractice {
         WebTableUtils.orderVerify(driver, "Ned Stark", "05/12/2021");
     }
 
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
-    }
 }
 
 
