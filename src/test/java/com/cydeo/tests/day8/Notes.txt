@@ -1,0 +1,15 @@
+TestBase - BaseTest:
+
+- What is TestBase?
+- It is an abstract class where we create and store some re-usable methods/annotations, objects, and also variables if needed.
+
+- Testbase is not a utility class/methods
+- TestBase will store some commonly used steps in out tests
+
+- Ideally you want to make TestBase abstract, because an object cannot be created from an abstract class
+
+- Is it mandotory to make TestBase class abstract?No
+
+- When we want to add any logic to Testbase class, we need to make sure it is applicable to all test methods
+
+- If we add a line that is not applicable to all Tests, it might create challenges rather than solving them
