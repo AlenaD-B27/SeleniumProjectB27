@@ -2,6 +2,7 @@ package com.cydeo.tests.day9_properties_configurations;
 
 import com.cydeo.tests.base.TestBase;
 import com.cydeo.utilities.BrowserUtils;
+import com.cydeo.utilities.CRM_Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -31,5 +32,18 @@ public class CRM_Login extends TestBase {
         BrowserUtils.verifyTitle(driver,"Portal");
 
 
+    }
+
+
+    @Test
+    public void crm_login_test2() {
+        driver.get("http://login1.nextbasecrm.com/");
+        CRM_Utilities.login_crm(driver);
+    }
+
+    @Test
+    public void crm_login_test3() {
+        driver.get("http://login1.nextbasecrm.com/");
+        CRM_Utilities.login_crm(driver, "hr3@cydeo.com", "UserUser" );
     }
 }
