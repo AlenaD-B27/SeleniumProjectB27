@@ -1,0 +1,117 @@
+PROPERTIES - CONFIGURATION READER
+
+- What is properties file?
+ - It is just another type of file like .txt , .cvs. .pdf
+ - But this file has .properties
+
+- Why do we use properties file? What makes it different then other type of file?
+ - It stores data in key=value format
+ - We are trying to avoid hard coding some of the important test data in our project
+
+- What is hard coding?
+ - Writin data directly inside of source code/.java class is called hard coding
+ - If I have to go inside of my .java class to change the data, it means I hard coded that data
+
+- How do we read from properties file?
+
+ #1. Create Properties class' object:
+
+     Properties properties = new Properties();
+
+ #2. Create FileInputStream object to open file as a stream in Java memory
+
+     FileInputStream file = new FileInputStream("pathOfTheFileWeAreTryingToOpen")
+
+ #3. Load "properties" object with the "file" we opened using FileInputStream
+
+     properties.load(file);
+
+
+  // you can also close the file to not get any space from java memory
+     file.close();
+
+ #4. We can use properties.getProperty method to read from the file we loaded.
+
+     properties.getProperty("key"); --> value
+
+     browser = chrome --> you will pass browser in .java class but it will return chrome
+     env = https://google.com --> you will pass env in .java class but it will return https://google.com
+
+
+- Which part of this is hard coded in our code from key = value
+  - "key" is what we write in .java class
+  - Therefore "key" will not change and it is hard coded
+
+  - "value" is inside of our configuretion.properties file
+  - we can change the value from outside of our code
+
+
+- What is ConfigurationReader? Why did we create this?
+ - To create utility method and able to read from configuration.properties file by just calling our ConfigurationReader.getproperty("key"); method
+
+
+--------------------------------------------------------------
+
+JAVAFAKER
+
+- JavaFaker is a library that allows us to generate random data in organized manner
+    - name
+    - address
+    - finance
+    - numerify: random digits in the order we want to get
+    - bothify : random alphanumeric in the order we want to get
+
+
+Faker faker = new Faker();
+
+String name = faker.name().fullName(); // Miss Samanta Schmidt
+String firstName = faker.name().firstName(); // Emory
+String lastName = faker.name().lastName(); // Barton
+
+String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
+
+
+----------------------------------------------------------
+
+DRIVER UTILITY CLASS
+
+- What, Why, How
+
+- What is the topic?
+ - We are going to create a new utility class: Driver
+
+- Why are we creating this utility class?
+ 1. We are writing too many lines just to be able to instantiate our WebDriver
+ 2. We are having hard time to pass SAME 'driver' instance around our project.
+   - When we are using any utility method, currently we have to pass "WebDriver driver"
+    as argument in each utility method
+
+
+ SOLUTION:
+
+ - Driver utils class and new .getDriver()  method we will be creating
+ - We will be creating a new logic whic will guarantee the same exact 'driver' instance everytime when we call method
+ - It will also handle the lines where we maximize the page and implicit wait
+
+
+- HOW?
+ - We will use "design pattern" into our Driver utility class
+
+- What is design pattern?
+ - design pattern is a general repeatable solution to a commonly occurring problem in software design.
+
+
+- We will use SINGLETON DESIGN PATTERN
+
+- What is SINGLETON DESIGN PATTERN?
+ - it will guarantee to return same object everytime we want to use this object
+
+
+- How do we apply Singleton Design Pattern?
+
+#1. We create private constructor
+#2. We create getter method to deliver the object in the way we want to deliver
+  - in the utility method, we will create the object below:
+
+    if object==null, create a new object and return it
+    if object is not null, just return existing object
