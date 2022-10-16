@@ -13,11 +13,11 @@ public class CRM_Utilities {
    public static void login_crm(WebDriver driver){
        //        3. Enter valid username  // hr2@cydeo.com
        WebElement inputUsername = driver.findElement(By.xpath("//input[@name='USER_LOGIN']"));
-       inputUsername.sendKeys("hr2@cydeo.com");
+       inputUsername.sendKeys(ConfigReader.getProperty("user_name"));
 
 //        4. Enter valid password  // UserUser
        WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
-       inputPassword.sendKeys("UserUser");
+       inputPassword.sendKeys(ConfigReader.getProperty("password"));
 
 //        5. Click to Log In button
        WebElement loginBtn = driver.findElement(By.xpath("//input[@class='login-btn']"));
@@ -47,6 +47,10 @@ public class CRM_Utilities {
 
 
 
+    }
+
+    public static void verifyTitle_CRM_homepage(WebDriver driver){
+        BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("title_after_login"));
     }
 
 }
