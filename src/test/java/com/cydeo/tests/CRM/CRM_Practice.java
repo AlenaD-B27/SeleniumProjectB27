@@ -30,6 +30,8 @@ public class CRM_Practice {
         loginBtn.click();
 
         BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("title_after_login"));
+
+        CRM_Utilities.logout_crm(driver);
     }
 
     @Test
@@ -56,6 +58,16 @@ public class CRM_Practice {
         Assert.assertTrue(rememberMeBox.isSelected());
         CRM_Utilities.login_crm(driver);
         CRM_Utilities.verifyTitle_CRM_homepage(driver);
+        CRM_Utilities.logout_crm(driver);
+    }
+
+    @Test
+    public void test_logout() {
+        driver.get(ConfigReader.getProperty("env"));
+        CRM_Utilities.login_crm(driver);
+        CRM_Utilities.logout_crm(driver);
+        BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("welcome_page_title"));
+
     }
 
     @AfterClass

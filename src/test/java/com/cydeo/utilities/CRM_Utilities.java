@@ -53,4 +53,12 @@ public class CRM_Utilities {
         BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("title_after_login"));
     }
 
+    public static void logout_crm(WebDriver driver){
+       WebElement userProfName = driver.findElement(By.id("user-block"));
+       userProfName.click();
+       WebElement logout = driver.findElement(By.xpath("//span[.='Log out']"));
+       logout.click();
+
+    }
+
 }
