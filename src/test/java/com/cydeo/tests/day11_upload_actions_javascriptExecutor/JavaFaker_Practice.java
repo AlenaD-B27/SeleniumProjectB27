@@ -86,7 +86,7 @@ public class JavaFaker_Practice {
 //        15. Verify success message “You've successfully completed registration!” is
 //        displayed.
         WebElement successText = Driver.getDriver().findElement(By.tagName("p"));
-        Assert.assertTrue(successText.isDisplayed(), ConfigReader.getProperty("successful.registration.text"));
+        Assert.assertEquals(successText.getText(), ConfigReader.getProperty("successful.registration.text"));
 
 
         Driver.closeDriver();
