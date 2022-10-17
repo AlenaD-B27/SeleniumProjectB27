@@ -1,4 +1,4 @@
-package com.cydeo.tests.help_friends;
+package com.cydeo.tests.self_practice.help_friends;
 
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
