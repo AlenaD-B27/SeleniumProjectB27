@@ -23,6 +23,10 @@ public class Hover_Test {
         WebElement user2 = Driver.getDriver().findElement(By.xpath("//h5[.='name: user2']"));
         WebElement user3 = Driver.getDriver().findElement(By.xpath("//h5[.='name: user3']"));
 
+        WebElement user1link = Driver.getDriver().findElement(By.xpath("//a[@href='/users/1']"));
+        WebElement user2link = Driver.getDriver().findElement(By.xpath("//a[@href='/users/2']"));
+        WebElement user3link = Driver.getDriver().findElement(By.xpath("//a[@href='/users/3']"));
+
 //    2. Hover over to first image
         Actions actions = new Actions(Driver.getDriver());
 
@@ -33,6 +37,7 @@ public class Hover_Test {
 //       a. “name: user1” is displayed
         Assert.assertTrue(user1.isDisplayed());
 //       b. “view profile” is displayed
+        Assert.assertTrue(user1link.isDisplayed());
 
 //    4. Hover over to second image
         actions.moveToElement(img2).perform();
@@ -41,6 +46,7 @@ public class Hover_Test {
 //       a. “name: user2” is displayed
         Assert.assertTrue(user2.isDisplayed());
 //       b. “view profile” is displayed
+        Assert.assertTrue(user2link.isDisplayed());
 
 //    6. Hover over to third image
         actions.moveToElement(img3).perform();
@@ -49,6 +55,9 @@ public class Hover_Test {
 //       a. “name: user3” is displayed
         Assert.assertTrue(user3.isDisplayed());
 //       b. “view profile” is displayed
+        Assert.assertTrue(user3link.isDisplayed());
+
+        Driver.closeDriver();
     }
 
 }

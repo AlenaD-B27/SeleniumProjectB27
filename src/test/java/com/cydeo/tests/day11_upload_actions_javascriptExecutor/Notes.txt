@@ -1,0 +1,120 @@
+10/17/2022
+
+
+ - Today's schedule:
+    - Review
+    - Java Faker Practice
+    - Upload & Download
+    - Actions
+    - JavaScriptExecutor
+
+
+------------------------------------------------------------------------------------
+
+- Why do we read data from configuration.properties?
+ #1. To eliminate hard coding important test data
+ #2. We can easily do cross browser(different type of browsers like chrome, firefox) testing
+
+- What is cross browser testing?
+ - Running the same test against different browsers.
+
+- Just by changing the value of "browser" key from "chrome" to "firefox", our test will be running in different browser
+
+ #3. We can also do DATA DRIVEN TESTING.
+  - What is DATA DRIVEN TESTING?
+  - Running the same set of tests against different set of data
+
+  - Since we are entering our test data from configuration.properties, we can change the value from there and we will be running sama test with using different test data
+
+
+-------------------------------------------------------------------
+
+- How do we read configuration.proerties?
+
+#1. Create Properties class object
+
+    Properties properties = new Properties();
+
+#2. We need to open the file in Java memory
+
+    FileInputStream file = new FileInputStream("pathOfTheFile");
+
+#3. We need to load the "properties" object with "file"
+
+    properties.load(file);
+
+#4. Use properties object and getProperty method to pass "key" and read "value"
+
+   properties.getProperty("key") --> "value"
+
+
+---------------------------------------------------
+
+- Why do we need ConfigurationReader utility class?
+ - We create the re-usable .getProperty utility method in ConfigurationReader class
+ - We can call this method in any class and any package when we need to read from configuration,properties file
+
+
+-----------------------------------------------
+
+
+DRIVER:
+
+- Why did we create Driver utility class and method?
+
+#1. We are having hard time passing SAME(current) driver instance in different classes and different pacjages
+
+#2. We had to write too many lines just to instantiate our "driver"
+
+#3. Now we are not only instatiate our driver in just 1 line, we alos optimize the setups:
+   - determine the type of browser by reading from configuration.properties file
+   - window.maxiize is implementing in our Driver itility class
+   - imlicitwait is implemented in our Driver utility class
+
+
+- How are we able to return same instance of driver?
+ - Implementing Singleton Design Pattern
+
+- What is the design pattern?
+ - Repeateble solution to a repeating issue
+
+- Singleton Design Pattern:
+  - it makes sure we are returning same instance everytime we call out method.
+  - In our case we are trying to return the same instanceof "driver"
+
+
+---------------------------------------------
+
+- How do we inplement SIngleton Design Pattern?
+
+#1. Create Private Constructor
+ - Once we create private constructor, we are closing access to the object of class
+ (Driver)
+ - We create private variable for our WebDriver to close access from outside
+
+#2. Create getter method to deliver the object (WebDriver) in the way we want to deliver
+ - The way we deliver it with using Singleton Design Pattern
+  - if first time the method called, it will create and do setups
+  - Next time we call same method, it will keep returning the same object until the session ends or terminate the session ourselves
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
