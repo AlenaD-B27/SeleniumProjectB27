@@ -6,7 +6,6 @@ import com.cydeo.utilities.ConfigReader;
 import com.cydeo.utilities.Driver;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -14,65 +13,50 @@ import org.testng.annotations.Test;
 
 public class CRM_Practice {
 
-    WebDriver driver = Driver.getDriver();
+
     Faker faker = new Faker();
 
     @Test
     public void test_successful_login() {
-        driver.get(ConfigReader.getProperty("env"));
-        WebElement inputUsername = driver.findElement(By.xpath("//input[@name='USER_LOGIN']"));
-        inputUsername.sendKeys(ConfigReader.getProperty("user_name"));
+        Driver.getDriver().get(ConfigReader.getProperty("env"));
+        CRM_Utilities.login_crm(Driver.getDriver());
 
-        WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
-        inputPassword.sendKeys(ConfigReader.getProperty("password"));
+        BrowserUtils.verifyTitle(Driver.getDriver(), ConfigReader.getProperty("title_after_login"));
 
-        WebElement loginBtn = driver.findElement(By.xpath("//input[@class='login-btn']"));
-        loginBtn.click();
-
-        BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("title_after_login"));
-
-        CRM_Utilities.logout_crm(driver);
+        CRM_Utilities.logout_crm(Driver.getDriver());
     }
 
     @Test
     public void test_invalid_credentials_login() {
-        driver.get(ConfigReader.getProperty("env"));
-        WebElement inputUsername = driver.findElement(By.xpath("//input[@name='USER_LOGIN']"));
-        inputUsername.sendKeys(faker.superhero().name() + '@' + faker.university().name() + ".com");
+        Driver.getDriver().get(ConfigReader.getProperty("env"));
+        CRM_Utilities.login_crm(Driver.getDriver(), faker.internet().emailAddress(), faker.internet().password());
 
-        WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
-        inputPassword.sendKeys(faker.random().hex());
-
-        WebElement loginBtn = driver.findElement(By.xpath("//input[@class='login-btn']"));
-        loginBtn.click();
-
-        Assert.assertEquals(driver.findElement(By.cssSelector("div.errortext")).getText(), ConfigReader.getProperty("invalid_credentials_login_error_message"));
+        Assert.assertEquals(Driver.getDriver().findElement(By.cssSelector("div.errortext")).getText(), ConfigReader.getProperty("invalid_credentials_login_error_message"));
     }
 
     @Test
     public void test_remember_me() {
-        driver.get(ConfigReader.getProperty("env"));
-        Assert.assertEquals(driver.findElement(By.xpath("//label[.='Remember me on this computer']")).getText(), ConfigReader.getProperty("remember_me_text"));
-        WebElement rememberMeBox = driver.findElement(By.id("USER_REMEMBER"));
+        Driver.getDriver().get(ConfigReader.getProperty("env"));
+        Assert.assertEquals(Driver.getDriver().findElement(By.xpath("//label[.='Remember me on this computer']")).getText(), ConfigReader.getProperty("remember_me_text"));
+        WebElement rememberMeBox = Driver.getDriver().findElement(By.id("USER_REMEMBER"));
         rememberMeBox.click();
         Assert.assertTrue(rememberMeBox.isSelected());
-        CRM_Utilities.login_crm(driver);
-        CRM_Utilities.verifyTitle_CRM_homepage(driver);
-        CRM_Utilities.logout_crm(driver);
+        CRM_Utilities.login_crm(Driver.getDriver());
+        CRM_Utilities.verifyTitle_CRM_homepage(Driver.getDriver());
+        CRM_Utilities.logout_crm(Driver.getDriver());
     }
 
     @Test
     public void test_logout() {
-        driver.get(ConfigReader.getProperty("env"));
-        CRM_Utilities.login_crm(driver);
-        CRM_Utilities.logout_crm(driver);
-        BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("welcome_page_title"));
+        Driver.getDriver().get(ConfigReader.getProperty("env"));
+        CRM_Utilities.login_crm(Driver.getDriver());
+        CRM_Utilities.logout_crm(Driver.getDriver());
+        BrowserUtils.verifyTitle(Driver.getDriver(), ConfigReader.getProperty("welcome_page_title"));
 
     }
 
     @AfterClass
-
     public void tearDown() {
-        driver.quit();
+        Driver.closeDriver();
     }
 }

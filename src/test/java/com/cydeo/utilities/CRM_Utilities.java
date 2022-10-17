@@ -13,10 +13,13 @@ public class CRM_Utilities {
    public static void login_crm(WebDriver driver){
        //        3. Enter valid username  // hr2@cydeo.com
        WebElement inputUsername = driver.findElement(By.xpath("//input[@name='USER_LOGIN']"));
+       inputUsername.clear();
        inputUsername.sendKeys(ConfigReader.getProperty("user_name"));
+
 
 //        4. Enter valid password  // UserUser
        WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
+       inputPassword.clear();
        inputPassword.sendKeys(ConfigReader.getProperty("password"));
 
 //        5. Click to Log In button
