@@ -1,0 +1,68 @@
+- ACTIONS:
+
+- Why do we need Actions class?
+ - To handle "advanced" mouse and keyboard actions
+
+Such as: - moveToElement()
+         - clickAndHold()
+         - dragAndDrop()
+         - contextClick() --> right click
+         - doubleClick()
+         - pause()
+         - perform() --> you have to use this method at the end of actions method
+         - keyDown(): imitates as if user presses a key from keyboard and holds it down
+         - keyUp(): imitates as if user lets go(release) a key that is already used by keyDown() method
+
+- How do we create Actions object?
+ #1. We create Actions class object
+ #2. We pass driver(Driver.getDriver) instance into Actions' constructor
+ #3. Now we can use this object for the methods coming from Actions class
+ #4. We have to use .perform() method at the end of actions methods
+
+
+ ---------------------------------------------------------
+
+ JAVASCRIPTEXECUTOR:
+
+ - What is JavaScriptExecutor?
+  - It is a simple interface coming from Selenium library that allows us to inject(pass)
+    JavaScript methods(funtions) into our Java-Selenium code
+
+  - Why do we need it?
+   - Because it is very strong web development language
+   - Therefore it is useful to be able to pass javascript code into Java-Selenium code for some certain situations
+
+ - How do we use JavaScriptExecutor?
+  1. We need to downcast(typecast) our driver type to JavaScriptExecutor
+  2. Now we can use the method coming from JavaScriptExecutor
+  3. We pass our JavaScript methods into .executeScript() method which will apply it in to our driver session
+
+
+  Syntax:
+             JavascriptExecutor js = ((JavascriptExecutor) Driver.getDriver())
+
+#1.      js.executeScript("window.scrollBy(x,y)")
+                                               x --> horizantol line (right/left)
+                                               y --> vertical line  (up/down)
+
+
+#2.     js.executeScript("arguments[0].scrollIntoView(true)",element1,element2,element3)
+
+            if you want to reach element1 --> you will use arguments[0]
+            if you want to reach element2 --> you will use arguments[1]
+            if you want to reach element3 --> you will use arguments[2]
+
+
+ ----------------------------------------------
+
+ P.I.Q:
+
+ - How many ways do you know how to scroll?
+
+  There are 4 ways of scroling:
+
+  #1. It is coming from JavascriptExecutor:  js.executeScript("window.scrollBy(x,y)")
+  #2. It is coming from JavascriptExecutor:  js.executeScript("arguments[0].scrollIntoView(true)",element1)
+
+  #3. PageUp, PageDown keys using keyboard actions
+  #4. We can use moveToElement() method from Actions class
