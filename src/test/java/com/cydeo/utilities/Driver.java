@@ -23,7 +23,7 @@ public class Driver {
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    WebDriverManager.chromedriver().setup();
+                    WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
             }
