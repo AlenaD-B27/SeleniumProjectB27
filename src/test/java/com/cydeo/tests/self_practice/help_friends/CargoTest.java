@@ -31,5 +31,7 @@ public class CargoTest {
         for (int i = 0; i < actualLinks.size(); i++) {
             Assert.assertEquals(actualLinks.get(i).getText(), expectedLinkTexts.get(i));
         }
+
+        Driver.closeDriver();
     }
 }
