@@ -1,0 +1,78 @@
+project structure:
+
+- src
+  - main --> it is for developers
+  - test
+     - java
+       - com.cydeo --> company/app related name
+         - tests
+            - base
+              - TestBase --> parent of all test classes
+            - test packages
+
+         - utilities
+            - BrowserUtils
+            - ConfigurationReader
+            - Driver
+
+- configuration.properties
+- pom.xml
+
+-------------------------------------------------------------
+
+- The reason we have created different packages, different utility classes, different type of file (.properties) are:
+
+  - re-usability
+  - to organize our code
+  - less code
+  - efficient
+  - easy to maintain
+  - to centralize
+  - avoid har coding
+
+#1. configuration.properties: to centralize and avoid hard coding for some of the important test data
+
+#2. TestBase : to centralize and re-use setup/teardown methods, some important variables
+
+#3. ConfigurationReader: to be able to repeatedly and easily read from configuration.properties file
+
+#4. Driver: to be able to instantiate our object in less line of code and also be able to pass same "driver" instance around our project (Singleton Design Pattern)
+
+#5. BrowserUtils: to centralize and easy to re-use some of general utility methods
+  - utility methods that are not specific to one page and can be applies in different classes/methods
+
+
+-------------------------------------------------------------
+
+- PAGE OBJECT MODEL DESIGN PATTERN (POM) :
+
+#1. What is PAGE OBJECT MODEL DESIGN PATTERN (POM)?
+
+  - Creating java class for each page of the web application
+  - All of the related web elements to current page will be stored to its own .java class
+  - We can also store related re-usable utility methods in its "page" class as well
+
+
+- So far we have centralized pretty much everything re-usable such as:
+ - important test data : in our configuration.properties
+ - utility methods in utilities packages under different classes
+  - Driver
+  - ConfigurationReader
+  - BrowserUtils
+
+- The only thing that we did not centralize or create a structure around is
+LOCATING WEBELEMENTS
+- PAGE OBJECT MODEL DESIGN PATTERN SOLVES THIS ISSUE WE CURRENTL HAVE
+
+
+---------------------------------------------------------
+
+- How are we going to implement POM design pattern?
+
+#1. Everytime we create a java class for a new page of out application, we will initialize our driver instance and the object of that class
+
+   - PageFactory.initElements(driver,this)
+   - This method basically initialize the driver instance and the object of the class
+   - After this line we will be able to use the object of the class, to reach the available WebElements
+
+#2. Instead of using .findElement/findElements method we will be using @FindBy annotation
