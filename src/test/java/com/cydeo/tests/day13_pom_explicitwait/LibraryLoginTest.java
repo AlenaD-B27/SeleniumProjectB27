@@ -1,6 +1,7 @@
 package com.cydeo.tests.day13_pom_explicitwait;
 
 import com.cydeo.pages.LibraryLoginPage;
+import com.cydeo.utilities.ConfigReader;
 import com.cydeo.utilities.Driver;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
@@ -15,7 +16,7 @@ public class LibraryLoginTest {
 
     @BeforeMethod
     public void setUp(){
-        Driver.getDriver().get("https://library1.cydeo.com/");
+        Driver.getDriver().get(ConfigReader.getProperty("library.app.url"));
         libraryLoginPage = new LibraryLoginPage();
     }
 
@@ -76,6 +77,18 @@ public class LibraryLoginTest {
         //4- Verify title expected error is displayed:
         //Expected: Sorry, Wrong Email or Password
         Assert.assertTrue(libraryLoginPage.wrongEmailAndPasswordErrorMsg.isDisplayed());
+
+    }
+
+    @Test
+    public void library_positive_login_test(){
+        //1- Open a chrome browser
+        //2- Go to: https://library1.cydeo.com
+        //3- Enter correct username and correct password
+
+        libraryLoginPage.inputUsername.sendKeys(ConfigReader.getProperty("library.app.username"));
+        libraryLoginPage.inputPassword.sendKeys(ConfigReader.getProperty("library.app.password"));
+        libraryLoginPage.signInBtn.click();
 
     }
 
