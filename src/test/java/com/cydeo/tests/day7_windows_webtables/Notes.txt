@@ -272,7 +272,6 @@ cssSelector --> tagname[attribute*='value']
                 input[data-ved*='UDCAY']
 
 
-                      come back at 4:08 EST
 
 
 

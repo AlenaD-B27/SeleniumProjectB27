@@ -2,6 +2,7 @@ package com.cydeo.tests.day13_pom_explicitwait;
 
 import com.cydeo.pages.DynamicallyLoadedPage_1;
 import com.cydeo.pages.DynamicallyLoadedPage_7;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,9 +49,10 @@ public class ExplicitWaitPractices {
 
         //3. Wait until loading bar disappears
 
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+//        wait.until(ExpectedConditions.invisibilityOf(dynamicallyLoadedPage_1.loadingBar));
 
-        wait.until(ExpectedConditions.invisibilityOf(dynamicallyLoadedPage_1.loadingBar));
+        BrowserUtils.waitForInvisibilityOf(dynamicallyLoadedPage_1.loadingBar, 30);
 
 
         //4. Assert username inputbox is displayed
