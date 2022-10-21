@@ -38,6 +38,8 @@ public class InternetSpeedTest {
         System.out.println("internetSpeedPage.downloadSpeed = " + internetSpeedPage.downloadSpeed.getText());
         System.out.println("internetSpeedPage.uploadSpeed = " + internetSpeedPage.uploadSpeed.getText());
 
+        Driver.closeDriver();
+
 
     }
 }

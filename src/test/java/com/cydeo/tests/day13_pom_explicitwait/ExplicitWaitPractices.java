@@ -52,7 +52,7 @@ public class ExplicitWaitPractices {
 //        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 //        wait.until(ExpectedConditions.invisibilityOf(dynamicallyLoadedPage_1.loadingBar));
 
-        BrowserUtils.waitForInvisibilityOf(dynamicallyLoadedPage_1.loadingBar, 30);
+        BrowserUtils.waitForInvisibilityOf(dynamicallyLoadedPage_1.loadingBar);
 
 
         //4. Assert username inputbox is displayed
@@ -73,6 +73,8 @@ public class ExplicitWaitPractices {
         //7. Click to Submit button
 
         dynamicallyLoadedPage_1.submitBtn.click();
+
+        BrowserUtils.waitForVisibilityOf(dynamicallyLoadedPage_1.errorMsg);
 
 
         //8. Assert “Your password is invalid!” text is displayed.
