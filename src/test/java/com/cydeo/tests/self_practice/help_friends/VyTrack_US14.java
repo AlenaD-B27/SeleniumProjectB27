@@ -42,7 +42,10 @@ public class VyTrack_US14 {
 
 
         WebElement manageFiltersBtn = Driver.getDriver().findElement(By.xpath("//a[@title='Filters']"));
-        manageFiltersBtn.click();
+
+        if(!manageFiltersBtn.isSelected()) {
+            manageFiltersBtn.click();
+        }
 
         WebElement manageOptions = Driver.getDriver().findElement(By.xpath("//a[.='Manage filters']"));
         manageOptions.click();
@@ -60,11 +63,15 @@ public class VyTrack_US14 {
 
         Assert.assertTrue(count == 5); // how many checked by default, and it passes, means all 5 options are visible as selected ones.
 
-        allBoxes.get(0).click();
-     /*   allBoxes.get(1).click();  // it stops here. When you try to run from index 2, for example, it stops on index 3 also.
-        allBoxes.get(2).click();
-        allBoxes.get(3).click();
-        allBoxes.get(4).click();
+
+     /*
+
+       for(WebElement eachBox : allBoxes){
+            eachBox.click();
+       }
+
+
+
 
         // next code will not be executed until the bug is fixed.
 
@@ -80,6 +87,8 @@ public class VyTrack_US14 {
         Assert.assertTrue(count == 5);
 
       */
+
+
 
 
 
